@@ -4,9 +4,9 @@ mkdir microservices
 cd microservices
 
 spring init \
---boot-version=2.5.2 \
---build=gradle \
---java-version=1.8 \
+--boot-version=3.0.4 \
+--type=gradle-project \
+--java-version=17 \
 --packaging=jar \
 --name=product-service \
 --package-name=sc.app.microservices.core.product \
@@ -16,9 +16,9 @@ spring init \
 product-service
 
 spring init \
---boot-version=2.5.2 \
---build=gradle \
---java-version=1.8 \
+--boot-version=3.0.4 \
+--type=gradle-project \
+--java-version=17 \
 --packaging=jar \
 --name=review-service \
 --package-name=sc.app.microservices.core.review \
@@ -28,9 +28,9 @@ spring init \
 review-service
 
 spring init \
---boot-version=2.5.2 \
---build=gradle \
---java-version=1.8 \
+--boot-version=3.0.4 \
+--type=gradle-project \
+--java-version=17 \
 --packaging=jar \
 --name=recommendation-service \
 --package-name=sc.app.microservices.core.recommendation \
@@ -40,9 +40,9 @@ spring init \
 recommendation-service
 
 spring init \
---boot-version=2.5.2 \
---build=gradle \
---java-version=1.8 \
+--boot-version=3.0.4 \
+--type=gradle-project \
+--java-version=17 \
 --packaging=jar \
 --name=product-composite-service \
 --package-name=sc.app.microservices.composite.product \

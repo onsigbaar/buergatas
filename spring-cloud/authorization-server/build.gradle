@@ -1,35 +1,35 @@
 plugins {
-    // Can't upgrade to Spring Boot 2.5.x until fixes for the following issues are released:
-    // 1. https://github.com/spring-projects-experimental/spring-authorization-server/issues/305
-    // 2. https://github.com/spring-projects/spring-security/issues/9787
-    id 'org.springframework.boot' version '2.4.4'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '3.0.4'
+    id 'io.spring.dependency-management' version '1.1.0'
     id 'java'
 }
 
 group = 'sc.app.springcloud'
 version = '1.0.0-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
 }
 
 ext {
-    set('springCloudVersion', "2020.0.2")
+    springCloudVersion = "2022.0.1"
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
-    implementation 'org.springframework.cloud:spring-cloud-starter-stream-kafka'
-    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin'
     implementation 'org.springframework.retry:spring-retry'
-    implementation 'org.springframework.security.experimental:spring-security-oauth2-authorization-server:0.1.0'
+    implementation "org.springframework.security:spring-security-oauth2-authorization-server:1.0.0"
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'net.sourceforge.htmlunit:htmlunit'
 }
 
 dependencyManagement {
@@ -38,6 +38,6 @@ dependencyManagement {
     }
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
 }

@@ -36,8 +36,16 @@ out/
 ### VS Code ###
 .vscode/
 
-### Other ##
-microservices
-settings.gradle
-api
-.env
+### Build ##
+/microservices
+/api
+/.env
+/gradle/wrapper/.tmp/
+/gradle/wrapper/caches/
+/gradle/wrapper/daemon/
+/gradle/wrapper/jdks/
+/gradle/wrapper/native/
+/gradle/wrapper/wrapper/
+/settings.gradle
+/create-projects.bash
+/kubernetes/first-attempts/

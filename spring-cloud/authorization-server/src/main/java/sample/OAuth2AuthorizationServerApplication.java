@@ -32,18 +32,18 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class OAuth2AuthorizationServerApplication {
 
-  @Bean
-  BaggagePropagation.FactoryBuilder myPropagationFactoryBuilder(
-    ObjectProvider<BaggagePropagationCustomizer> baggagePropagationCustomizers) {
-    Propagation.Factory delegate = B3Propagation.newFactoryBuilder().injectFormat(B3Propagation.Format.MULTI).build();
-    BaggagePropagation.FactoryBuilder builder = BaggagePropagation.newFactoryBuilder(delegate);
-    baggagePropagationCustomizers.orderedStream().forEach((customizer) -> customizer.customize(builder));
-    return builder;
-  }
+    @Bean
+    BaggagePropagation.FactoryBuilder myPropagationFactoryBuilder(
+            ObjectProvider<BaggagePropagationCustomizer> baggagePropagationCustomizers) {
+        Propagation.Factory delegate = B3Propagation.newFactoryBuilder().injectFormat(B3Propagation.Format.MULTI).build();
+        BaggagePropagation.FactoryBuilder builder = BaggagePropagation.newFactoryBuilder(delegate);
+        baggagePropagationCustomizers.orderedStream().forEach((customizer) -> customizer.customize(builder));
+        return builder;
+    }
 
-  public static void main(String[] args) {
-    SpringApplication.run(OAuth2AuthorizationServerApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(OAuth2AuthorizationServerApplication.class, args);
+    }
 
 }
 //CHECKSTYLE:ON

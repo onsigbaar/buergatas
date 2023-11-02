@@ -15,24 +15,24 @@ import reactor.core.publisher.Hooks;
 @SpringBootApplication
 public class GatewayApplication {
 
-  @Bean
-  @LoadBalanced
-  public WebClient.Builder loadBalancedWebClientBuilder() {
-    return WebClient.builder();
-  }
+    @Bean
+    @LoadBalanced
+    public WebClient.Builder loadBalancedWebClientBuilder() {
+        return WebClient.builder();
+    }
 
-  @Bean
-  BaggagePropagation.FactoryBuilder myPropagationFactoryBuilder(
-    ObjectProvider<BaggagePropagationCustomizer> baggagePropagationCustomizers) {
-    Propagation.Factory delegate = B3Propagation.newFactoryBuilder().injectFormat(B3Propagation.Format.MULTI).build();
-    BaggagePropagation.FactoryBuilder builder = BaggagePropagation.newFactoryBuilder(delegate);
-    baggagePropagationCustomizers.orderedStream().forEach((customizer) -> customizer.customize(builder));
-    return builder;
-  }
+    @Bean
+    BaggagePropagation.FactoryBuilder myPropagationFactoryBuilder(
+            ObjectProvider<BaggagePropagationCustomizer> baggagePropagationCustomizers) {
+        Propagation.Factory delegate = B3Propagation.newFactoryBuilder().injectFormat(B3Propagation.Format.MULTI).build();
+        BaggagePropagation.FactoryBuilder builder = BaggagePropagation.newFactoryBuilder(delegate);
+        baggagePropagationCustomizers.orderedStream().forEach((customizer) -> customizer.customize(builder));
+        return builder;
+    }
 
-  public static void main(String[] args) {
-    Hooks.enableAutomaticContextPropagation();
-    SpringApplication.run(GatewayApplication.class, args);
-  }
+    public static void main(String[] args) {
+        Hooks.enableAutomaticContextPropagation();
+        SpringApplication.run(GatewayApplication.class, args);
+    }
 
 }

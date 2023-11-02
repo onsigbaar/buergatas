@@ -180,7 +180,7 @@ services:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_USR}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PWD}
     healthcheck:
-      test: ["CMD", "rabbitmqctl", "status"]
+      test: [ "CMD", "rabbitmqctl", "status" ]
       interval: 5s
       timeout: 2s
       retries: 60
@@ -215,7 +215,7 @@ services:
     volumes:
       - $PWD/config-repo:/config-repo
     healthcheck:
-      test: ["CMD", "curl", "-fs", "http://localhost:4004/actuator/health"]
+      test: [ "CMD", "curl", "-fs", "http://localhost:4004/actuator/health" ]
       interval: 5s
       timeout: 2s
       retries: 60

@@ -6,31 +6,31 @@ spec:
   commonName: minikube.me
   subject:
     countries:
-      - my-country
+    - my-country
     localities:
-      - my-locality
+    - my-locality
     organizationalUnits:
-      - my-ou
+    - my-ou
     organizations:
-      - my-org
+    - my-org
     postalCodes:
-      - my-pc
+    - my-pc
     provinces:
-      - my-province
+    - my-province
     serialNumber: my-sn
     streetAddresses:
-      - my-address
+    - my-address
   dnsNames:
-    - minikube.me
-    - health.minikube.me
-    - dashboard.minikube.me
-    - kiali.minikube.me
-    - tracing.minikube.me
-    - prometheus.minikube.me
-    - grafana.minikube.me
-    - kibana.minikube.me
-    - elasticsearch.minikube.me
-    - mail.minikube.me
+  - minikube.me
+  - health.minikube.me
+  - dashboard.minikube.me
+  - kiali.minikube.me
+  - tracing.minikube.me
+  - prometheus.minikube.me
+  - grafana.minikube.me
+  - kibana.minikube.me
+  - elasticsearch.minikube.me
+  - mail.minikube.me
   issuerRef:
     name: ca-issuer
   secretName: hands-on-certificate

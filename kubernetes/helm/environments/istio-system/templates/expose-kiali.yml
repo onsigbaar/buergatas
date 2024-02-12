@@ -7,15 +7,15 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - "kiali.minikube.me"
-      port:
-        number: 443
-        name: https-kiali
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: hands-on-certificate
+  - hosts:
+    - "kiali.minikube.me"
+    port:
+      number: 443
+      name: https-kiali
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: hands-on-certificate
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -24,15 +24,15 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-    - "kiali.minikube.me"
+  - "kiali.minikube.me"
   gateways:
-    - kiali-gateway
+  - kiali-gateway
   http:
-    - route:
-        - destination:
-            host: kiali
-            port:
-              number: 20001
+  - route:
+    - destination:
+        host: kiali
+        port:
+          number: 20001
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule

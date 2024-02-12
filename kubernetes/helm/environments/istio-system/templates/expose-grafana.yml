@@ -7,15 +7,15 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - "grafana.minikube.me"
-      port:
-        number: 443
-        name: https-grafana
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: hands-on-certificate
+  - hosts:
+    - "grafana.minikube.me"
+    port:
+      number: 443
+      name: https-grafana
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: hands-on-certificate
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -24,15 +24,15 @@ metadata:
   namespace: istio-system
 spec:
   hosts:
-    - "grafana.minikube.me"
+  - "grafana.minikube.me"
   gateways:
-    - grafana-gateway
+  - grafana-gateway
   http:
-    - route:
-        - destination:
-            host: grafana
-            port:
-              number: 3000
+  - route:
+    - destination:
+        host: grafana
+        port:
+          number: 3000
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule

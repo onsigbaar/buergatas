@@ -139,25 +139,25 @@ destinationRules:
   - name: auth-server
   - name: product
     subsets:
-      - labels:
-          version: v1
-        name: old
-      - labels:
-          version: v2
-        name: new
+    - labels:
+        version: v1
+      name: old
+    - labels:
+        version: v2
+      name: new
   - name: recommendation
     subsets:
-      - labels:
-          version: v1
-        name: old
-      - labels:
-          version: v2
-        name: new
+    - labels:
+        version: v1
+      name: old
+    - labels:
+        version: v2
+      name: new
   - name: review
     subsets:
-      - labels:
-          version: v1
-        name: old
-      - labels:
-          version: v2
-        name: new
+    - labels:
+        version: v1
+      name: old
+    - labels:
+        version: v2
+      name: new

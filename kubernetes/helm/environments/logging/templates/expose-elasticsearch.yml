@@ -7,15 +7,15 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - "elasticsearch.minikube.me"
-      port:
-        number: 443
-        name: https-tracing
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: hands-on-certificate
+  - hosts:
+    - "elasticsearch.minikube.me"
+    port:
+      number: 443
+      name: https-tracing
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: hands-on-certificate
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -24,15 +24,15 @@ metadata:
   namespace: logging
 spec:
   hosts:
-    - "elasticsearch.minikube.me"
+  - "elasticsearch.minikube.me"
   gateways:
-    - elasticsearch-gateway
+  - elasticsearch-gateway
   http:
-    - route:
-        - destination:
-            host: elasticsearch
-            port:
-              number: 9200
+  - route:
+    - destination:
+        host: elasticsearch
+        port:
+          number: 9200
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule

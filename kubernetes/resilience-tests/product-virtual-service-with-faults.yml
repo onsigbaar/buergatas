@@ -6,11 +6,11 @@ spec:
   hosts:
     - product
   http:
-    - route:
-        - destination:
-            host: product
-      fault:
-        abort:
-          httpStatus: 500
-          percentage:
-            value: 20
+  - route:
+    - destination:
+        host: product
+    fault:
+      abort:
+        httpStatus: 500
+        percentage:
+          value: 20

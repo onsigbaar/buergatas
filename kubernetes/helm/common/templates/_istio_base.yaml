@@ -1,4 +1,4 @@
-{ { - define "common.istio_base" - } }
+{{- define "common.istio_base" -}}
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
@@ -6,7 +6,7 @@ metadata:
 spec:
   action: ALLOW
   rules:
-    - { }
+  - {}
   selector:
     matchLabels:
       app.kubernetes.io/name: product-composite
@@ -25,9 +25,9 @@ metadata:
   name: product-composite-request-authentication
 spec:
   jwtRules:
-    - forwardOriginalToken: true
-      issuer: http://auth-server
-      jwksUri: http://auth-server.hands-on.svc.cluster.local/oauth2/jwks
+  - forwardOriginalToken: true
+    issuer: http://auth-server
+    jwksUri: http://auth-server.hands-on.svc.cluster.local/oauth2/jwks
   selector:
     matchLabels:
       app.kubernetes.io/name: product-composite
@@ -40,15 +40,15 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - minikube.me
-      port:
-        name: https
-        number: 443
-        protocol: HTTPS
-      tls:
-        credentialName: hands-on-certificate
-        mode: SIMPLE
+  - hosts:
+    - minikube.me
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      credentialName: hands-on-certificate
+      mode: SIMPLE
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -56,52 +56,52 @@ metadata:
   name: hands-on-vs
 spec:
   gateways:
-    - hands-on-gw
+  - hands-on-gw
   hosts:
-    - minikube.me
+  - minikube.me
   http:
-    - match:
-        - uri:
-            prefix: /oauth2
-      route:
-        - destination:
-            host: auth-server
-    - match:
-        - uri:
-            prefix: /login
-      route:
-        - destination:
-            host: auth-server
-    - match:
-        - uri:
-            prefix: /error
-      route:
-        - destination:
-            host: auth-server
-    - match:
-        - uri:
-            prefix: /product-composite
-      route:
-        - destination:
-            host: product-composite
-            port:
-              number: 80
-    - match:
-        - uri:
-            prefix: /openapi
-      route:
-        - destination:
-            host: product-composite
-            port:
-              number: 80
-    - match:
-        - uri:
-            prefix: /webjars
-      route:
-        - destination:
-            host: product-composite
-            port:
-              number: 80
+  - match:
+    - uri:
+        prefix: /oauth2
+    route:
+    - destination:
+        host: auth-server
+  - match:
+    - uri:
+        prefix: /login
+    route:
+    - destination:
+        host: auth-server
+  - match:
+    - uri:
+        prefix: /error
+    route:
+    - destination:
+        host: auth-server
+  - match:
+    - uri:
+        prefix: /product-composite
+    route:
+    - destination:
+        host: product-composite
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: /openapi
+    route:
+    - destination:
+        host: product-composite
+        port:
+          number: 80
+  - match:
+    - uri:
+        prefix: /webjars
+    route:
+    - destination:
+        host: product-composite
+        port:
+          number: 80
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
@@ -111,15 +111,15 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - hosts:
-        - "health.minikube.me"
-      port:
-        number: 443
-        name: https-health
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: hands-on-certificate
+  - hosts:
+    - "health.minikube.me"
+    port:
+      number: 443
+      name: https-health
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: hands-on-certificate
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -127,13 +127,13 @@ metadata:
   name: health-vs
 spec:
   hosts:
-    - "health.minikube.me"
+  - "health.minikube.me"
   gateways:
-    - health-gateway
+  - health-gateway
   http:
-    - route:
-        - destination:
-            host: product-composite
-            port:
-              number: 4004
-  { { - end - } }
+  - route:
+    - destination:
+        host: product-composite
+        port:
+          number: 4004
+{{- end -}}

@@ -7,10 +7,10 @@
   "sendReminder": false,
   "disableResolveMessage": false,
   "frequency": "",
-  "created": "2023-10-31T16:30:56Z",
-  "updated": "2023-10-31T16:30:56Z",
+  "created": "2023-05-31T16:30:56Z",
+  "updated": "2023-05-31T16:30:56Z",
   "settings": {
-    "addresses": "app@minikube.me",
+    "addresses": "magnus@minikube.me",
     "autoResolve": true,
     "httpMethod": "POST",
     "severity": "critical",

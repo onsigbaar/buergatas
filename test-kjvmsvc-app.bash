@@ -2,11 +2,11 @@
 #
 # With Docker Compose:
 #
-#   HOST=localhost PORT=8443 HEALTH_URL=https://localhost:8443 USE_K8S=false ./test-em-all.bash
+#   HOST=localhost PORT=8443 HEALTH_URL=https://localhost:8443 USE_K8S=false ./test-kjvmsvc-app.bash
 #
 # With Kubernetes:
 #
-#   ./test-em-all.bash
+#   ./test-kjvmsvc-app.bash
 #
 : ${HOST=minikube.me}
 : ${PORT=443}
@@ -18,7 +18,7 @@
 : ${PROD_ID_NO_RECS=113}
 : ${PROD_ID_NO_REVS=213}
 : ${SKIP_CB_TESTS=false}
-: ${NAMESPACE=hands-on}
+: ${NAMESPACE=kjvmsvc-app}
 
 function assertCurl() {
 

@@ -1,6 +1,6 @@
 apiVersion: v2
 appVersion: "1.0"
-description: A Helm chart for HANDS-ON MICROSERVICES WITH SPRING BOOT AND SPRING CLOUD running in a QA or Production environment
+description: A Helm chart for KJVMSVC-APP running in a QA or Production environment
 name: prod-env
 version: 1.0.0
 

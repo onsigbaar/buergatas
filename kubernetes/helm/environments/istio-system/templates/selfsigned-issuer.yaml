@@ -11,7 +11,7 @@ metadata:
   name: ca-cert
 spec:
   isCA: true
-  commonName: hands-on-ca
+  commonName: kjvmsvc-app-ca
   secretName: ca-secret
   issuerRef:
     name: selfsigned-issuer

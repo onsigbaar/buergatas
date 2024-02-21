@@ -47,5 +47,4 @@ out/
 /gradle/wrapper/native/
 /gradle/wrapper/wrapper/
 /settings.gradle
-/create-projects.bash
 /kubernetes/first-attempts/

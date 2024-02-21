@@ -27,7 +27,7 @@ spec:
   jwtRules:
   - forwardOriginalToken: true
     issuer: http://auth-server
-    jwksUri: http://auth-server.hands-on.svc.cluster.local/oauth2/jwks
+    jwksUri: http://auth-server.kjvmsvc-app.svc.cluster.local/oauth2/jwks
   selector:
     matchLabels:
       app.kubernetes.io/name: product-composite
@@ -35,7 +35,7 @@ spec:
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: hands-on-gw
+  name: kjvmsvc-app-gw
 spec:
   selector:
     istio: ingressgateway
@@ -47,16 +47,16 @@ spec:
       number: 443
       protocol: HTTPS
     tls:
-      credentialName: hands-on-certificate
+      credentialName: kjvmsvc-app-certificate
       mode: SIMPLE
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: hands-on-vs
+  name: kjvmsvc-app-vs
 spec:
   gateways:
-  - hands-on-gw
+  - kjvmsvc-app-gw
   hosts:
   - minikube.me
   http:
@@ -119,7 +119,7 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: hands-on-certificate
+      credentialName: kjvmsvc-app-certificate
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService

@@ -22,7 +22,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: fluentd
-        image: hands-on/fluentd:v1
+        image: kjvmsvc-app/fluentd:v1
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
             value: "elasticsearch.logging"
@@ -62,5 +62,5 @@ spec:
           path: /run/log/journal
       - name: fluentd-extra-config
         configMap:
-          name: "fluentd-hands-on-config"
+          name: "fluentd-kjvmsvc-app-config"
       terminationGracePeriodSeconds: 30

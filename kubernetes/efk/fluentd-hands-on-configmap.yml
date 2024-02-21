@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: fluentd-hands-on-config
+  name: fluentd-kjvmsvc-app-config
   namespace: kube-system
 data:
-  fluentd-hands-on.conf: |
+  fluentd-kjvmsvc-app.conf: |
 
     <match kubernetes.**istio**>
       @type rewrite_tag_filter
@@ -15,7 +15,7 @@ data:
       </rule>
     </match>
 
-    <match kubernetes.**hands-on**>
+    <match kubernetes.**kjvmsvc-app**>
       @type rewrite_tag_filter
       <rule>
         key log

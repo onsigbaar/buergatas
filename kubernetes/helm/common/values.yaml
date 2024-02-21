@@ -7,7 +7,7 @@ ingress:
     secretName: tls-certificate
 
 image:
-  repository: hands-on
+  repository: kjvmsvc-app
   tag: latest
   pullPolicy: Never
   args: []

@@ -15,7 +15,7 @@ spec:
       protocol: HTTPS
     tls:
       mode: SIMPLE
-      credentialName: hands-on-certificate
+      credentialName: kjvmsvc-app-certificate
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
